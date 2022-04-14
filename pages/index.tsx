@@ -9,7 +9,7 @@ import { Meta } from "../partials/Meta";
 import { IconType } from "react-icons";
 
 export default function Home() {
-  const [email, setEmail] = useState<string>("+1");
+  const [number, setNumber] = useState<string>("");
   const [showAlert, setShowAlert] = useState({
     type: "",
     show: false,
@@ -31,14 +31,14 @@ export default function Home() {
   const submitWaitlistForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!email) return toggleAlert("error", "Please supply a number.");
+    if (!number) return toggleAlert("error", "Please supply a number.");
 
     try {
       const { data } = await axios.post(
         "https://getwaitlist.com/api/v1/waitlists/submit",
         {
           api_key: process.env.NEXT_PUBLIC_WAITLIST_API_KEY,
-          email,
+          number,
           referral_link: document.URL,
         },
         {
@@ -50,7 +50,7 @@ export default function Home() {
 
       if (data) {
         toggleAlert("success", "You'll be notified for early access!");
-        setEmail("");
+        setNumber("");
       }
     } catch (err) {
       console.error(err);
@@ -95,8 +95,8 @@ export default function Home() {
                 <TextInput
                   placeholder=""
                   width="w-full sm:w-[27rem] 2xl:w-[35rem]"
-                  value={email}
-                  setValue={setEmail}
+                  value={number}
+                  setValue={setNumber}
                   Icon="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
                   onSubmit={submitWaitlistForm}
                   type="text"
@@ -121,7 +121,7 @@ export default function Home() {
       <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
         Four <span className="text-transform-gradient">easy</span> steps:
       </h2>
-      <div className="pt-4 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
+      <div className="pt-6 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
         <div
           className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"

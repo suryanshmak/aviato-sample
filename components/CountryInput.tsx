@@ -2,6 +2,9 @@ import React, { EventHandler, useEffect, useRef, useState } from "react";
 import { IconType } from "react-icons";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { FiArrowRight } from "react-icons/fi";
+import { CountryDropdown } from "react-country-region-selector";
+import getUnicodeFlagIcon from "country-flag-icons/unicode";
+import Flags from "country-flag-icons/react/3x2";
 
 interface TextInputProps {
   Icon: string;
@@ -26,6 +29,7 @@ export const TextInput = ({
 }: TextInputProps) => {
   const [active, setActive] = useState<boolean>(false);
   const ref = useRef<HTMLFormElement>(null);
+  const [country, setCountry] = useState<string>("Afghanistan");
 
   useEffect(() => {
     const handleClick = (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -38,6 +42,7 @@ export const TextInput = ({
     //@ts-ignore
     return () => document.removeEventListener("click", handleClick);
   }, []);
+
   return (
     <div
       className={`relative ${width} rounded-lg flex items-center gap-2 bg-[#171717] border-[0.1rem] border-[#2B2B2B] focus-within:border-[#3981f6]`}
@@ -51,9 +56,7 @@ export const TextInput = ({
           className="flex items-center gap-[6px] cursor-pointer"
           onClick={() => setActive((prev) => !prev)}
         >
-          <div className="ml-4 h-full w-[1.5rem] grid items-center">
-            <img src={Icon} alt="icon" className="h-[1.8rem]" />
-          </div>
+          <span className="ml-4 w-6 h-6">{getUnicodeFlagIcon(country)}</span>
           <BsFillCaretDownFill className="w-[0.8rem]" />
         </div>
         <input
@@ -64,14 +67,13 @@ export const TextInput = ({
           onChange={(e) => setValue(e.target.value)}
         />
         {active ? (
-          <div className="absolute top-16 p-2 w-full lg:w-[75%] max-h-[17rem] overflow-hidden scrollbar-none bg-[#000000] shadow-md border border-[#2B2B2B] rounded-xl z-[999] flex flex-col gap-3">
-            <div>Search something</div>
-            <div>India</div>
-            <div>USA</div>
-            <div>Africa</div>
-            <div>China</div>
-            <div>England</div>
-          </div>
+          <CountryDropdown
+            valueType="short"
+            value={country}
+            onChange={(val) => setCountry(val)}
+            defaultOptionLabel="Afghanistan"
+            classes="absolute top-16 rounded-md py-2 bg-[#000000]"
+          />
         ) : null}
       </form>
       <button type="submit" className="cursor-pointer transition-all">
