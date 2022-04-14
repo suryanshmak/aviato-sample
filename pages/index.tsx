@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { TextInput } from "../components/CountryInput";
-import { FiFlag, FiMail } from "react-icons/fi";
+import { FiMic } from "react-icons/fi";
+import { BsPeopleFill, BsCurrencyDollar, BsArrowRight } from "react-icons/bs";
+import { ImRocket } from "react-icons/im";
 import axios from "axios";
 import { Alert } from "../components/Alert";
 import { Meta } from "../partials/Meta";
+import { IconType } from "react-icons";
 
 export default function Home() {
   const [email, setEmail] = useState<string>("+1");
@@ -54,6 +57,19 @@ export default function Home() {
       toggleAlert("error", "Something went wrong, try again later.");
     }
   };
+
+  type Step = {
+    icon: IconType;
+    title: string;
+    shouldRender: boolean;
+  };
+
+  const steps: Step[] = [
+    { icon: FiMic, title: "Pitch", shouldRender: true },
+    { icon: BsPeopleFill, title: "Meet", shouldRender: true },
+    { icon: BsCurrencyDollar, title: "Raise", shouldRender: true },
+    { icon: ImRocket, title: "Launch", shouldRender: false },
+  ];
   return (
     <>
       <Meta
@@ -61,8 +77,8 @@ export default function Home() {
         description="Take the next leap."
         keywords="startup"
       />
-      <section className="md:pb-10 sm:py-10 h-[85%] lg:h-[100%] w-full flex items-center">
-        <div className="h-[75%] flex justify-between grow">
+      <section className="h-[85%] lg:h-[100%] w-full flex items-center">
+        <div className="h-[75%]">
           <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start grow">
             <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem] md:w-[35rem] 2xl:w-[37rem] w-full">
               <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
@@ -93,15 +109,51 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex h-screen lg:w-1/2 w-3/4 justify-center">
+        <div className="hidden lg:flex h-screen items-center">
           <img
             src="/icons/Mockup.svg"
             alt="cover-image"
             draggable={false}
-            className="my-8 h-[680px] w-[840px] pointer-events-none"
+            className="h-[740px] w-[840px] pointer-events-none ml-6"
           />
         </div>
       </section>
+      <div className="pt-4 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
+        <div>
+          <div
+            className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
+        border-r border-neutral-800 rounded-t-2xl"
+          >
+            <div
+              className="absolute w-0 h-0 border-[12px] border-b-0 border-[transparent] right-[-12px] bottom-0"
+              style={{ borderTopColor: "white" }}
+            />
+          </div>
+          <ul className="w-full py-6 flex items-center justify-between">
+            {steps.map((step, index) => (
+              <>
+                <li
+                  key={`${index}`}
+                  className={`border-[1px] rounded-md border-[#3a3a3a] py-4 w-[94px] grid place-items-center gap-2`}
+                >
+                  <step.icon className="w-6 h-6" />
+                  <p className="text-[18px]">{step.title}</p>
+                </li>
+                {step.shouldRender ? (
+                  <BsArrowRight className="w-6 h-6" />
+                ) : null}
+              </>
+            ))}
+          </ul>
+          <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
+            <div
+              className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
+              style={{ borderBottomColor: "white" }}
+            />
+          </div>
+        </div>
+      </div>
+
       <Alert
         type={showAlert.type as any}
         show={showAlert.show}
