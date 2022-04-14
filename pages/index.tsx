@@ -118,39 +118,38 @@ export default function Home() {
           />
         </div>
       </section>
+      <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+        Four <span className="text-transform-gradient">easy</span> steps:
+      </h2>
       <div className="pt-4 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
-        <div>
-          <div
-            className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
+        <div
+          className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"
-          >
-            <div
-              className="absolute w-0 h-0 border-[12px] border-b-0 border-[transparent] right-[-12px] bottom-0"
-              style={{ borderTopColor: "white" }}
-            />
-          </div>
-          <ul className="w-full py-6 flex items-center justify-between">
-            {steps.map((step, index) => (
-              <>
-                <li
-                  key={`${index}`}
-                  className={`border-[1px] rounded-md border-[#3a3a3a] py-4 w-[94px] grid place-items-center gap-2`}
-                >
-                  <step.icon className="w-6 h-6" />
-                  <p className="text-[18px]">{step.title}</p>
-                </li>
-                {step.shouldRender ? (
-                  <BsArrowRight className="w-6 h-6" />
-                ) : null}
-              </>
-            ))}
-          </ul>
-          <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
-            <div
-              className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
-              style={{ borderBottomColor: "white" }}
-            />
-          </div>
+        >
+          <div
+            className="absolute w-0 h-0 border-[12px] border-b-0 border-[transparent] right-[-12px] bottom-0"
+            style={{ borderTopColor: "white" }}
+          />
+        </div>
+        <ul className="w-full py-6 flex items-center justify-between">
+          {steps.map((step, index) => (
+            <>
+              <li
+                key={`${index}`}
+                className={`border-[1px] rounded-md border-[#3a3a3a] py-4 w-[94px] grid place-items-center gap-2`}
+              >
+                <step.icon className="w-6 h-6" />
+                <p className="text-[18px]">{step.title}</p>
+              </li>
+              {step.shouldRender ? <BsArrowRight className="w-6 h-6" /> : null}
+            </>
+          ))}
+        </ul>
+        <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
+          <div
+            className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
+            style={{ borderBottomColor: "white" }}
+          />
         </div>
       </div>
 
