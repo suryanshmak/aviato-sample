@@ -114,15 +114,17 @@ footer,
   border-color: rgb(64 64 64);
 }
 
-html::-webkit-scrollbar {
-  display: none;
+html::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
 }
 
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
-html {
+html,
+.no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

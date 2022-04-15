@@ -80,20 +80,17 @@ export default function Home() {
         keywords="startup"
       />
       <section className="h-full lg:w-screen">
-        <div className="h-full w-full flex items-center lg:justify-center">
-          <div
-            className="h-[75%] grid place-items-center self-start"
-            style={{ width: "calc(30vw + 20ch)" }}
-          >
+        <div className="h-full w-full flex items-center justify-start">
+          <div className="h-[75%] grid place-items-center self-start lg:max-w-[50%]">
             <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem]">
-              <h1 className="text-[2rem] sm:text-[3rem] md:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+              <h1 className="text-[2rem] sm:text-[3rem] md:text-[3.4rem] lg:text-[3.8rem] xl:text-[4.2rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
                 Let your next big idea
                 <span className="animated-text"> take flight!</span>
               </h1>
-              <p className="text-[1rem] md:text-[1.25rem] xl:text-[1.45rem] font-regular tracking-wider lg:leading-[2.7rem]">
+              <p className="text-[1rem] md:text-[1.25rem] xl:text-[1.4rem] font-regular tracking-wider lg:leading-[2.7rem]">
                 All it takes is{" "}
-                <span className="text-transform-gradient">two taps</span>, and a
-                <span className="text-transform-gradient"> minute</span> long
+                <span className="text-transform-gradient">two taps</span> and a
+                <span className="text-transform-gradient"> minute-long</span>{" "}
                 video pitch 😃
               </p>
               <div className="flex flex-col gap-3 select-none w-full">
@@ -117,7 +114,7 @@ export default function Home() {
               src="/icons/Mockup.svg"
               alt=""
               draggable={false}
-              className="w-[640px] h-[640px] xl:h-[720px] xl:w-[720px] pointer-events-none"
+              className="h-[640px] xl:h-[720px] w-[640px] 2xl:h-[800px] pointer-events-none"
             />
           </div>
         </div>
