@@ -59,7 +59,7 @@ export const TextInput = ({
           <img
             src={src}
             alt="icon"
-            className="h-full w-[3rem] md:w-auto max-w-[3.4rem] rounded-r-md"
+            className="md:w-auto max-w-[3rem] rounded-r-md"
           />
         </button>
       </form>

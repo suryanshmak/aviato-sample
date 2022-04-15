@@ -101,7 +101,7 @@ export default function Home() {
                   setValue={setNumber}
                   onSubmit={submitWaitlistForm}
                   type="number"
-                  src="https://cdn.discordapp.com/icons/867114954560503819/b634a2e99342b092f8b3d682b7615405.webp?size=240"
+                  src="/icons/logo.png"
                 />
                 <span className="text-[0.8rem]">
                   We&apos;re probably going to spam you 😉
