@@ -79,10 +79,13 @@ export default function Home() {
         description="Take the next leap."
         keywords="startup"
       />
-      <section className="h-full lg:w-screen flex xl:gap-[10ch] items-center">
-        <div className="h-[75%]">
-          <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start">
-            <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem] md:w-[35rem] 2xl:w-[37rem] w-full">
+      <section className="h-full lg:w-screen">
+        <div className="h-full w-full flex items-center lg:justify-center">
+          <div
+            className="h-[75%] grid place-items-center self-start"
+            style={{ width: "calc(30vw + 20ch)" }}
+          >
+            <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem]">
               <h1 className="text-[2rem] sm:text-[3rem] md:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
                 Let your next big idea
                 <span className="animated-text"> take flight!</span>
@@ -109,14 +112,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="hidden h-full lg:flex items-center select-none">
-          <img
-            src="/icons/Mockup.svg"
-            alt=""
-            draggable={false}
-            className="w-[640px] h-[640px] xl:h-[720px] xl:w-[720px] pointer-events-none"
-          />
+          <div className="hidden h-full lg:flex items-center select-none">
+            <img
+              src="/icons/Mockup.svg"
+              alt=""
+              draggable={false}
+              className="w-[640px] h-[640px] xl:h-[720px] xl:w-[720px] pointer-events-none"
+            />
+          </div>
         </div>
       </section>
       <div className="hidden md:block pb-10">
@@ -125,7 +128,7 @@ export default function Home() {
         </h2>
         <div className="pt-6 pb-16 w-10/12 transform translate-x-20 grid items-center">
           <div
-            className="hidden lg:block transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
+            className="hidden lg:block transform translate-x-10 relative w-[88%] xl:w-[91%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"
           >
             <div
@@ -149,7 +152,7 @@ export default function Home() {
               </>
             ))}
           </ul>
-          <div className="hidden lg:block transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
+          <div className="hidden lg:block transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[91%] border-l border-r border-neutral-800 rounded-b-2xl">
             <div
               className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
               style={{ borderBottomColor: "white" }}
