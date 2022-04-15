@@ -1,4 +1,5 @@
 import { SocialButtons } from "./SocialButtons";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -11,7 +12,9 @@ const Footer = () => {
         </div>
         <div className="flex gap-4">
           <div className="flex gap-4">
-            <p className="cursor-pointer hover:opacity-80">Careers</p>
+            <Link href="https://joinaviato.notion.site/joinaviato/Aviato-Careers-f0c7cfb7cd1444bd8450327e8ba8e447">
+              <a className="cursor-pointer hover:opacity-80">Careers</a>
+            </Link>
           </div>
           <p className="cursor-pointer hover:opacity-80">Privacy</p>
           <SocialButtons />
