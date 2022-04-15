@@ -1,3 +1,3 @@
 # landing
 
-Landing page for Aviato
+Sample of the landing page for Aviato
