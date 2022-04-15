@@ -1,3 +1,3 @@
 # landing
 
-Sample of the landing page for Aviato
+Sample of the landing page for [Aviato](https://joinaviato.com)
