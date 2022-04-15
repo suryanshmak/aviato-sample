@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { CountrySelector } from "./Selector";
 import { COUNTRIES } from "../lib/countries";
 import { SelectMenuOption } from "../lib/types";
-
+import Prefixnum from "prefix-number";
 interface TextInputProps {
-  Icon: string;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   placeholder: string;
   value: string;
@@ -49,19 +48,21 @@ export const TextInput = ({
       >
         <input
           type={type}
-          className="w-full h-full bg-[transparent] !outline-none !border-none !shadow-none !ring-0"
+          className="w-full h-full bg-[transparent] !outline-none !border-none !shadow-none !ring-0 appearance-none"
           placeholder={placeholder}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={Number(value) || ""}
+          onChange={(e) =>
+            setValue(new Prefixnum(country).toPrefix() + e.target.value)
+          }
         />
+        <button type="submit" className="cursor-pointer transition-all">
+          <img
+            src={src}
+            alt="icon"
+            className="h-full w-[3rem] md:w-auto max-w-[3.4rem] rounded-r-md"
+          />
+        </button>
       </form>
-      <button type="submit" className="cursor-pointer transition-all">
-        <img
-          src={src}
-          alt="icon"
-          className="h-full w-[3rem] md:w-auto max-w-[3.4rem] rounded-r-md"
-        />
-      </button>
     </div>
   );
 };

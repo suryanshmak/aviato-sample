@@ -111,6 +111,10 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 html {
   -ms-overflow-style: none;
   scrollbar-width: none;

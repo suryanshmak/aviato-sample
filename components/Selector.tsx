@@ -50,7 +50,7 @@ export const CountrySelector = React.forwardRef<HTMLDivElement, Props>(
             onClick={props.onToggle}
           >
             <span className="truncate flex items-center gap-2">
-              <span className="w-6">
+              <span className="w-7">
                 <img
                   alt={`${props.selectedValue.value}`}
                   src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${props.selectedValue.value}.svg`}
@@ -58,9 +58,10 @@ export const CountrySelector = React.forwardRef<HTMLDivElement, Props>(
                 />
               </span>
               <span className="inline">
-                <BsFillCaretDownFill className="w-[0.8rem]" />
+                <BsFillCaretDownFill className="w-2" />
               </span>
-              +{new Prefixnum(props.selectedValue.value).toPrefix()}
+              <span className="h-6 rounded-sm w-[2px] bg-[#2d2d2d]" />
+              <p>+{new Prefixnum(props.selectedValue.value).toPrefix()}</p>
             </span>
           </button>
 
@@ -89,7 +90,7 @@ export const CountrySelector = React.forwardRef<HTMLDivElement, Props>(
                     onChange={(e) => setQuery(e.target.value)}
                   />
                 </div>
-                <hr className="border-[#3d3d3d] w-full pb-4" />
+                <hr className="border-[#3d3d3d] w-full pb-2" />
                 <div
                   className={"max-h-60 overflow-y-scroll p-2"}
                   style={{ WebkitScrollSnapType: "none" }}

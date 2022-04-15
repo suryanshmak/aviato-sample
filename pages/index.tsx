@@ -3,10 +3,10 @@ import { TextInput } from "../components/CountryInput";
 import { FiMic } from "react-icons/fi";
 import { BsPeopleFill, BsCurrencyDollar, BsArrowRight } from "react-icons/bs";
 import { ImRocket } from "react-icons/im";
-import axios from "axios";
 import { Alert } from "../components/Alert";
 import { Meta } from "../partials/Meta";
 import { IconType } from "react-icons";
+import twilioclient from "twilio";
 
 export default function Home() {
   const [number, setNumber] = useState<string>("");
@@ -33,29 +33,26 @@ export default function Home() {
 
     if (!number) return toggleAlert("error", "Please supply a number.");
 
-    try {
-      const { data } = await axios.post(
-        "https://getwaitlist.com/api/v1/waitlists/submit",
-        {
-          api_key: process.env.NEXT_PUBLIC_WAITLIST_API_KEY,
-          number,
-          referral_link: document.URL,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    // const accountSid = process.env.NEXT_PUBLIC_ACCOUNT_SID;
+    // const authToken = process.env.NEXT_PUBLIC_AUTH_TOKEN;
+    // const client = twilioclient(accountSid, authToken);
 
-      if (data) {
-        toggleAlert("success", "You'll be notified for early access!");
-        setNumber("");
-      }
-    } catch (err) {
-      console.error(err);
-      toggleAlert("error", "Something went wrong, try again later.");
-    }
+    // try {
+    //   const { sid } = await client.messages.create({
+    //     body: "Hello there!",
+    //     from: "+15555555555",
+    //     mediaUrl: ["https://giphy.com/gifs/whale-qhhamrBnxSKNG"],
+    //     to: number,
+    //   });
+
+    //   if (sid) {
+    //     toggleAlert("success", "You'll be notified for early access!");
+    //     setNumber("");
+    //   }
+    // } catch (err) {
+    //   console.error(err);
+    //   toggleAlert("error", "Something went wrong, try again later.");
+    // }
   };
 
   type Step = {
@@ -70,6 +67,7 @@ export default function Home() {
     { icon: BsCurrencyDollar, title: "Raise", shouldRender: true },
     { icon: ImRocket, title: "Launch", shouldRender: false },
   ];
+
   return (
     <>
       <Meta
@@ -97,9 +95,8 @@ export default function Home() {
                   width="w-full sm:w-[27rem] 2xl:w-[35rem]"
                   value={number}
                   setValue={setNumber}
-                  Icon="https://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
                   onSubmit={submitWaitlistForm}
-                  type="text"
+                  type="number"
                   src="https://cdn.discordapp.com/icons/867114954560503819/b634a2e99342b092f8b3d682b7615405.webp?size=240"
                 />
                 <span className="text-[0.8rem]">
@@ -118,41 +115,44 @@ export default function Home() {
           />
         </div>
       </section>
-      <h2 className="hidden lg:block text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
-        Four <span className="text-transform-gradient">easy</span> steps:
-      </h2>
-      <div className="pt-6 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
-        <div
-          className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
+      <div>
+        <h2 className="hidden lg:block text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+          Four <span className="text-transform-gradient">easy</span> steps:
+        </h2>
+        <div className="pt-6 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
+          <div
+            className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"
-        >
-          <div
-            className="absolute w-0 h-0 border-[12px] border-b-0 border-[transparent] right-[-12px] bottom-0"
-            style={{ borderTopColor: "white" }}
-          />
-        </div>
-        <ul className="w-full py-6 flex items-center justify-between">
-          {steps.map((step, index) => (
-            <>
-              <li
-                key={`${index}`}
-                className={`border-[1px] rounded-md border-[#3a3a3a] py-4 w-[94px] grid place-items-center gap-2`}
-              >
-                <step.icon className="w-6 h-6" />
-                <p className="text-[18px]">{step.title}</p>
-              </li>
-              {step.shouldRender ? <BsArrowRight className="w-6 h-6" /> : null}
-            </>
-          ))}
-        </ul>
-        <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
-          <div
-            className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
-            style={{ borderBottomColor: "white" }}
-          />
+          >
+            <div
+              className="absolute w-0 h-0 border-[12px] border-b-0 border-[transparent] right-[-12px] bottom-0"
+              style={{ borderTopColor: "white" }}
+            />
+          </div>
+          <ul className="w-full py-6 flex items-center justify-between">
+            {steps.map((step, index) => (
+              <>
+                <li
+                  key={`${step.title}`}
+                  className={`border-[1px] rounded-md border-[#3a3a3a] py-4 w-[94px] grid place-items-center gap-2`}
+                >
+                  <step.icon className="w-6 h-6" />
+                  <p className="text-[18px]">{step.title}</p>
+                </li>
+                {step.shouldRender ? (
+                  <BsArrowRight className="w-6 h-6" />
+                ) : null}
+              </>
+            ))}
+          </ul>
+          <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
+            <div
+              className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
+              style={{ borderBottomColor: "white" }}
+            />
+          </div>
         </div>
       </div>
-
       <Alert
         type={showAlert.type as any}
         show={showAlert.show}
