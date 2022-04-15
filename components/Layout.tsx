@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
-    <div className="h-screen w-screen container mx-auto px-[2rem] lg:px-[5rem]">
+    <div className="h-screen w-screen container mx-auto px-[2rem]">
       {children}
       <Footer />
     </div>

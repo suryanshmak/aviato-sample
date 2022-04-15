@@ -79,9 +79,9 @@ export default function Home() {
         description="Take the next leap."
         keywords="startup"
       />
-      <section className="h-[100%] w-full flex items-center">
-        <div className="h-[75%]">
-          <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start grow">
+      <section className="h-full lg:w-screen flex justify-between items-center">
+        <div className="h-[75%] lg:grow grid justify-center">
+          <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start">
             <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem] md:w-[35rem] 2xl:w-[37rem] w-full">
               <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
                 Let your next big idea
@@ -110,20 +110,20 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex h-screen items-center">
+        <div className="hidden lg:flex grow">
           <img
             src="/icons/Mockup.svg"
             alt="cover-image"
             draggable={false}
-            className="h-[740px] w-[840px] pointer-events-none ml-6"
+            className="h-[720px] w-[720px] pointer-events-none"
           />
         </div>
       </section>
-      <div>
-        <h2 className="hidden lg:block text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+      <div className="hidden lg:block pb-10">
+        <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
           Four <span className="text-transform-gradient">easy</span> steps:
         </h2>
-        <div className="pt-6 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">
+        <div className="pt-6 pb-16 w-10/12 transform translate-x-20 grid items-center">
           <div
             className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"
@@ -134,7 +134,7 @@ export default function Home() {
             />
           </div>
           <ul className="w-full py-6 flex items-center justify-between">
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <>
                 <li
                   key={`${step.title}`}

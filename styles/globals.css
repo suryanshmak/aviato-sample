@@ -9,18 +9,25 @@
 }
 
 .animated-text {
-  background: url("https://media4.giphy.com/media/3o6vXRpbptjHM70EzS/200w.webp?cid=ecf05e47gp3eeo3fq7tq0bncrq030e6meca71ezv002bizbk&ct=g&rid=200w.webp");
+  background-image: linear-gradient(
+    43deg,
+    #009ffd 0%,
+    #1668cd 20%,
+    #006aff 40%,
+    #0062ff 60%,
+    #0066ff 80%,
+    #2a2a72 100%
+  );
+  background-size: 200% auto;
   background-clip: text;
-  background-size: cover;
-  background-position: 20%;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  animation: textShine 4s infinite;
 }
 
 @keyframes textShine {
   to {
-    background-position: 100%;
+    background-position: 200% 200%;
   }
 }
 
