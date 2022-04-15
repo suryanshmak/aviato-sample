@@ -8,6 +8,7 @@ import { Meta } from "../partials/Meta";
 import { IconType } from "react-icons";
 import twilioclient from "twilio";
 import Prefixnum from "prefix-number";
+import Image from "next/image";
 
 export default function Home() {
   const [number, setNumber] = useState<string>("");
@@ -16,7 +17,6 @@ export default function Home() {
     show: false,
     message: "",
   });
-
   const toggleAlert = (type: "success" | "error", message: string) => {
     setShowAlert({
       type,
@@ -79,11 +79,11 @@ export default function Home() {
         description="Take the next leap."
         keywords="startup"
       />
-      <section className="h-full lg:w-screen flex justify-between items-center">
-        <div className="h-[75%] lg:grow grid justify-center">
+      <section className="h-full lg:w-screen flex xl:gap-[10ch] items-center">
+        <div className="h-[75%]">
           <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start">
             <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem] md:w-[35rem] 2xl:w-[37rem] w-full">
-              <h1 className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+              <h1 className="text-[2rem] sm:text-[3rem] md:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.2rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
                 Let your next big idea
                 <span className="animated-text"> take flight!</span>
               </h1>
@@ -110,22 +110,22 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="hidden lg:flex grow">
+        <div className="hidden h-full lg:flex items-center select-none">
           <img
             src="/icons/Mockup.svg"
-            alt="cover-image"
+            alt=""
             draggable={false}
-            className="h-[720px] w-[720px] pointer-events-none"
+            className="w-[640px] h-[640px] xl:h-[720px] xl:w-[720px] pointer-events-none"
           />
         </div>
       </section>
-      <div className="hidden lg:block pb-10">
+      <div className="hidden md:block pb-10">
         <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
           Four <span className="text-transform-gradient">easy</span> steps:
         </h2>
         <div className="pt-6 pb-16 w-10/12 transform translate-x-20 grid items-center">
           <div
-            className="transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
+            className="hidden lg:block transform translate-x-10 relative w-[88%] xl:w-[90%] h-12 border-t border-l 
         border-r border-neutral-800 rounded-t-2xl"
           >
             <div
@@ -149,7 +149,7 @@ export default function Home() {
               </>
             ))}
           </ul>
-          <div className="transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
+          <div className="hidden lg:block transform translate-x-10 h-12 border-b relative w-[88%] xl:w-[90%] border-l border-r border-neutral-800 rounded-b-2xl">
             <div
               className="absolute w-0 h-0 border-[12px] border-t-0 border-[transparent] left-[-12px] top-0"
               style={{ borderBottomColor: "white" }}

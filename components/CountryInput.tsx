@@ -22,7 +22,7 @@ export const TextInput = ({
   setValue,
   type = "text",
   width = "w-full",
-  src = "https://cdn.discordapp.com/icons/867114954560503819/b634a2e99342b092f8b3d682b7615405.webp?size=240",
+  src,
 }: TextInputProps) => {
   const [active, setActive] = useState<boolean>(false);
   const [country, setCountry] = useState<string>("AF");
