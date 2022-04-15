@@ -11,7 +11,7 @@ interface MetaProps {
 export const Meta = ({
   title,
   description,
-  url = "",
+  url = "/images/seo-image.png",
   keywords = "",
   image = "https://joinaviato.com/brand/favicon.ico",
 }: MetaProps) => (
