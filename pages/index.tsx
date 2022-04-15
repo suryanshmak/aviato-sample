@@ -7,6 +7,7 @@ import { Alert } from "../components/Alert";
 import { Meta } from "../partials/Meta";
 import { IconType } from "react-icons";
 import twilioclient from "twilio";
+import Prefixnum from "prefix-number";
 
 export default function Home() {
   const [number, setNumber] = useState<string>("");
@@ -28,7 +29,10 @@ export default function Home() {
     }, 4000);
   };
 
-  const submitWaitlistForm = async (e: React.FormEvent<HTMLFormElement>) => {
+  const submitWaitlistForm = async (
+    e: React.FormEvent<HTMLFormElement>,
+    country: string
+  ) => {
     e.preventDefault();
 
     if (!number) return toggleAlert("error", "Please supply a number.");
@@ -42,7 +46,7 @@ export default function Home() {
     //     body: "Hello there!",
     //     from: "+15555555555",
     //     mediaUrl: ["https://giphy.com/gifs/whale-qhhamrBnxSKNG"],
-    //     to: number,
+    //     to: `${new Prefixnum(country).toPrefix()}${number}`,
     //   });
 
     //   if (sid) {
