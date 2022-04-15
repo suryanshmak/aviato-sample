@@ -77,7 +77,7 @@ export default function Home() {
         description="Take the next leap."
         keywords="startup"
       />
-      <section className="h-[85%] lg:h-[100%] w-full flex items-center">
+      <section className="h-[100%] w-full flex items-center">
         <div className="h-[75%]">
           <div className="flex items-center lg:justify-between lg:gap-[4rem] self-start grow">
             <div className="flex flex-col gap-[1.5rem] 2xl:gap-[2rem] md:w-[35rem] 2xl:w-[37rem] w-full">
@@ -118,7 +118,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <h2 className="text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
+      <h2 className="hidden lg:block text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] font-bold lg:leading-[4rem] xl:leading-[5rem] select-none">
         Four <span className="text-transform-gradient">easy</span> steps:
       </h2>
       <div className="pt-6 pb-16 hidden w-10/12 transform translate-x-20 lg:grid items-center">

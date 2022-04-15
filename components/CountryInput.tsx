@@ -1,10 +1,7 @@
-import React, { EventHandler, useEffect, useRef, useState } from "react";
-import { IconType } from "react-icons";
-import { BsFillCaretDownFill } from "react-icons/bs";
-import { FiArrowRight } from "react-icons/fi";
-import { CountryDropdown } from "react-country-region-selector";
-import getUnicodeFlagIcon from "country-flag-icons/unicode";
-import Flags from "country-flag-icons/react/3x2";
+import React, { useState } from "react";
+import { CountrySelector } from "./Selector";
+import { COUNTRIES } from "../lib/countries";
+import { SelectMenuOption } from "../lib/types";
 
 interface TextInputProps {
   Icon: string;
@@ -18,7 +15,6 @@ interface TextInputProps {
 }
 
 export const TextInput = ({
-  Icon,
   onSubmit,
   placeholder,
   value,
@@ -28,37 +24,29 @@ export const TextInput = ({
   src = "https://cdn.discordapp.com/icons/867114954560503819/b634a2e99342b092f8b3d682b7615405.webp?size=240",
 }: TextInputProps) => {
   const [active, setActive] = useState<boolean>(false);
-  const ref = useRef<HTMLFormElement>(null);
-  const [country, setCountry] = useState<string>("Afghanistan");
-
-  useEffect(() => {
-    const handleClick = (e: React.ChangeEvent<HTMLFormElement>) => {
-      if (!ref.current.contains(e.target)) {
-        setActive(false);
-      }
-    };
-    //@ts-ignore
-    document.addEventListener("click", handleClick);
-    //@ts-ignore
-    return () => document.removeEventListener("click", handleClick);
-  }, []);
+  const [country, setCountry] = useState<string>("AF");
+  const ref = React.createRef<HTMLDivElement>();
 
   return (
     <div
       className={`relative ${width} rounded-lg flex items-center gap-2 bg-[#171717] border-[0.1rem] border-[#2B2B2B] focus-within:border-[#3981f6]`}
     >
-      <form
-        className="w-full h-auto bg-[transparent] flex items-center"
-        onSubmit={onSubmit}
+      <CountrySelector
+        id="countries"
         ref={ref}
+        open={active}
+        onToggle={() => setActive((prev) => !prev)}
+        onChange={(val) => setCountry(val)}
+        selectedValue={
+          COUNTRIES.find(
+            (option) => option.value === country
+          ) as SelectMenuOption
+        }
+      />
+      <form
+        className="h-auto bg-[transparent] flex items-center grow"
+        onSubmit={onSubmit}
       >
-        <div
-          className="flex items-center gap-[6px] cursor-pointer"
-          onClick={() => setActive((prev) => !prev)}
-        >
-          <span className="ml-4 w-6 h-6">{getUnicodeFlagIcon(country)}</span>
-          <BsFillCaretDownFill className="w-[0.8rem]" />
-        </div>
         <input
           type={type}
           className="w-full h-full bg-[transparent] !outline-none !border-none !shadow-none !ring-0"
@@ -66,15 +54,6 @@ export const TextInput = ({
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        {active ? (
-          <CountryDropdown
-            valueType="short"
-            value={country}
-            onChange={(val) => setCountry(val)}
-            defaultOptionLabel="Afghanistan"
-            classes="absolute top-16 rounded-md py-2 bg-[#000000]"
-          />
-        ) : null}
       </form>
       <button type="submit" className="cursor-pointer transition-all">
         <img
